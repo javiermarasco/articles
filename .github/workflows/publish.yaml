@@ -23,6 +23,6 @@ jobs:
         github_token: ${{ secrets.GH_TOKEN }}
         branch: main
         conventional_commits: true
-      env:
-        DEBUG: *
+        env:
+          DEBUG: *
 
