@@ -45,7 +45,7 @@ There are multiple ways to deploy Prometheus in a Kubernetes cluster but the sim
 
 # What is Helm
 
-Helm is a technology that allows us to package a bunch of YAML files that will be used as a whole to make a solution to work (in this case the solution is Prometheus), by using Helm you are removing the complexity of needing to manage independently all the resources to make the solution work, instead you provide a configuration file to the chart and deploy the chart, that will create all the resources for you and configure them properly.
+Helm is a technology that allows us to package a bunch of YAML files that will be used as a whole to make a solution to work (https://github.com/javiermarasco/articles/blob/main/Articles/In this case the solution is Prometheus), by using Helm you are removing the complexity of needing to manage independently all the resources to make the solution work, instead you provide a configuration file to the chart and deploy the chart, that will create all the resources for you and configure them properly.
 
 One of the advantages of using Helm is that you can rely on repositories where those charts are being maintained and use them, but you could also want to keep your own version of the chart locally or in a private repository, so you can tune it to match your needs (like using a custom docker image in the chart instead of using the default one, think of security needs for example)
 
@@ -55,7 +55,7 @@ Each chart has its own set of files because they represent a group of resources 
 
 In order to use helm charts you require to have helm installed in your system and add the repositories that you will be using, each helm chart lives in a repository that you require to add in order to retrieve the chart and it's files.
 
-![](Images/prometheus/helm-repo-add.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-repo-add.png)
 *adding a repository*
 
 For this article we will use the default Prometheus helm chart
@@ -64,7 +64,7 @@ For this article we will use the default Prometheus helm chart
 
 Well for this article we will need:
 
-- An AKS cluster up and running, nothing special, just the base deployment is fine, you can follow this [tutorial](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal) (I will make a tutorial in the future) 
+- An AKS cluster up and running, nothing special, just the base deployment is fine, you can follow this [tutorial](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal) (https://github.com/javiermarasco/articles/blob/main/Articles/I will make a tutorial in the future) 
 
 - A terminal with kubectl and helm installed 
 
@@ -85,7 +85,7 @@ Now we can check all the charts that we can install now that we added the reposi
 helm search repo prometheus-community
 ```
 
-![](Images/prometheus/helm-search-repo.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-search-repo.png)
 
 Perfect! We see a lot of charts there, those are different elements that we can install, but today we will focus on the one called "prometheus"
 
@@ -96,7 +96,7 @@ helm search repo prometheus-community/prometheus -l | grep -v "prometheus-commun
 ```
 *The grep is to remove all the other charts from the list*
 
-![](Images/prometheus/chart-versions.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/chart-versions.png)
 
 If you install Prometheus without telling the version of the chart that you want, it will install the latest (14.11.1 at the moment I write this article).
 
@@ -107,24 +107,24 @@ helm install prometheus prometheus-community/prometheus
 ```
 *the "prometheus" before the name of the repository/chart is the name we want to give to this deployment, you can choose another name.
 
-![](Images/prometheus/helm-install.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-install.png)
 
-Now we have our Prometheus server installed and ready, let's check in Kubernetes what we got deployed (I had the "default" namespace selected while installing the chart, so my chart was deployed in the "default" namespace)
+Now we have our Prometheus server installed and ready, let's check in Kubernetes what we got deployed (https://github.com/javiermarasco/articles/blob/main/Articles/I had the "default" namespace selected while installing the chart, so my chart was deployed in the "default" namespace)
 
 **One important thing is that when you install a helm chart, it gets installed in a namespace in Kubernetes, if you change to another namespace and try to see the installed charts, you will not see the one you installed in the other namespace. Let me put this in an image to explain better:**
 
 *This is a `helm list` in my "default" namespace
-![](Images/prometheus/helm-list-default.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-list-default.png)
 
 *This is a `helm list` in another namespace
-![](Images/prometheus/helm-list-other.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-list-other.png)
 
 In Kubernetes we can see all the resources created automatically:
 
 ```bash
 kubectl get all
 ```
-![](Images/prometheus/kubectl-get-all.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/kubectl-get-all.png)
 
 Following the steps described after the installation of the helm chart, we should forward a port from our machine to the pod where Prometheus server is running with:
 
@@ -141,13 +141,13 @@ kubectl --namespace default port-forward $POD_NAME 9090
 
 With this we can now go to our browser and access `localhost:9090` to see this dashboard:
 
-![](Images/prometheus/prometheus-dashboard.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/prometheus-dashboard.png)
 
 Prometheus has a lot of default metrics getting collected by default, to check them you can start writing something in the search box, and it will autocomplete with available metrics.
 
 As an example:
 
-![](Images/prometheus/prometheus-metric1.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/prometheus-metric1.png)
 
 And now, the only thing that is left is to dig into the metrics Prometheus is collecting, maybe adding some exporters, configure alert manager maybe? (this is a topic for another post), consume those metrics from Grafana? (Article about this is already in the queue :wink: ) 
 

@@ -38,10 +38,10 @@ Para instalar Grafana tenemos varias opciones, dependiendo de nuestras necesidad
 Vamos a continuar con el uso de Helm Charts porque realmente creo que es LA forma en la que se deben deployar aplicaciones en Kubernetes, es mucho mas simple de mantener, mas manejable su configuración y además nos permite muy fácilmente deployar la misma aplicación con la misma configuración en múltiples clusters sin ningún cambio.
 
 Para comenzar vamos a agregar el repositorio de Grafana y correr un `helm repo update` para actualizar la lista de repositorios en nuestra máquina.
-![](Images/grafana/helm-repo-add.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-repo-add.png)
 
 Ahora podemos inspeccionar ese repositorio y ver que Charts tenemos disponibles, veamos:
-![](Images/grafana/helm-search-repo.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-search-repo.png)
 
 Genial, tenemos el Chart que necesitamos `Grafana`, pero también tenemos en el mismo repositorio otras configuraciones de Grafana para distintos propósitos, continuemos.
 
@@ -62,7 +62,7 @@ Para este ejercicio vamos a instalar los recursos de Grafana en un `namespace` s
 ```bash
 kubectl create namespace monitoring
 ```
-![](Images/grafana/create-namespace.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/create-namespace.png)
 
 **En mi terminal tengo instalado kubens que es una aplicación que nos permite setear el namespace en el que vamos a trabajar cuando ejecutemos kubectl y de esta forma nos ahorramos tener que especificar el `-n namespace` con cada comando**
 
@@ -72,7 +72,7 @@ Ahora veamos nuevamente la lista de charts que agregamos:
 helm search repo grafana
 ```
 
-![](Images/grafana/helm-search-repo-grafana.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-search-repo-grafana.png)
 
 Perfecto, vemos que hay muchos charts además del que necesitamos, esto es porque en el mismo repositorio de Helm se distribuyen otras configuraciones de grafana (combinaciones e Grafana con otros productos).   
 
@@ -82,7 +82,7 @@ Vamos a instalar el chart de Grafana:
 helm install grafana grafana/grafana
 ```
 
-![](Images/grafana/helm-install-grafana.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-install-grafana.png)
 
 Vemos que el comando instalo el chart de Grafana y ya nos esta indicando algunas cosas que son interesantes, veamos que son:
 
@@ -129,7 +129,7 @@ Ahora podemos hacer:
 kubectl port-forward grafana-5c999c4fd5-czxdw 3000:3000
 ```
 
-![](Images/grafana/grafana-login-1.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/grafana-login-1.png)
 
 Usamos `admin` como usuario y  el password que obtuvimos antes como password `xzUvc2esXl2aSivqhQQ5X3ZZ01TZ2HMCEPdpWVSJ`
 

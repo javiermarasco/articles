@@ -54,7 +54,7 @@ Cada chart tiene su propio conjunto de archivos porque representan un grupo de r
 
 Para utilizar los charts de helm, tenés que tener helm instalado en tu sistema y agregar los repositorios que utilizará, cada chart de helm vive en un repositorio que se debe agregar para descargar el chart y sus archivos.
 
-![](Images/prometheus/helm-repo-add.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-repo-add.png)
 * agregando un repositorio *
 
 Para este artículo usaremos los charts de Prometheus estándar.
@@ -84,7 +84,7 @@ Ahora podemos revisar todos los gráficos que podemos instalar ahora que agregam
 helm search repo prometheus-community
 ```
 
-![](Images/prometheus/helm-search-repo.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-search-repo.png)
 
 ¡Perfecto! Vemos muchos charts allí, esos son elementos diferentes que podemos instalar, pero hoy nos centraremos en el llamado "prometheus".
 
@@ -95,7 +95,7 @@ helm search repo prometheus-community/prometheus -l | grep -v "community-prometh
 ```
 * El comando grep es para eliminar todos los demás charts de la lista *
 
-![](Images/prometheus/chart-versions.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/chart-versions.png)
 
 Si instalas Prometheus sin decir la versión del gráfico que deseas, se instalará la última (14.11.1 en el momento en que escribo este artículo).
 
@@ -106,24 +106,24 @@ helm install prometheus prometheus-community/prometheus
 ```
 * el "prometheus" antes del nombre del repositorio/gráfico es el nombre que queremos darle a esta implementación, podés elegir otro nombre.
 
-![](Images/prometheus/helm-install.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-install.png)
 
 Ahora que tenemos nuestro servidor Prometheus instalado y listo, verifiquemos en Kubernetes lo que implementamos (tenía el espacio de nombres "default" seleccionado al instalar el gráfico, por lo que mi gráfico se implementó en el espacio de nombres "default")
 
 ** Una cosa importante es que cuando instala un gráfico de helm, se instala en un namespace en Kubernetes, si cambia a otro namespace e intentas ver los gráficos instalados, no verás el que instalaste en el otro namespace. Dejame poner esto en una imagen para explicarlo mejor: **
 
 * Esto es un `helm list` en mi namespace" default "
-![](Images/prometheus/helm-list-default.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-list-default.png)
 
 * Esto es un `helm list` en otro namespace
-![](Images/prometheus/helm-list-other.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/helm-list-other.png)
 
 En Kubernetes podemos ver todos los recursos creados automáticamente:
 
 ```bash
 kubectl get all
 ```
-![](Images/prometheus/kubectl-get-all.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/kubectl-get-all.png)
 
 Siguiendo los pasos descritos después de la instalación del gráfico de helm, debemos reenviar un puerto desde nuestra máquina al pod donde se ejecuta el servidor Prometheus con:
 
@@ -140,13 +140,13 @@ kubectl --namespace default port-forward $POD_NAME 9090
 
 Con esto ahora podemos ir a nuestro navegador y acceder a `localhost: 9090` para ver este dashboard:
 
-![](Images/prometheus/prometheus-dashboard.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/prometheus-dashboard.png)
 
 Prometheus tiene muchas métricas predeterminadas que se recopilan de forma predeterminada, para verlas, podes comenzar a escribir algo en el cuadro de búsqueda y se completará automáticamente con las métricas disponibles.
 
 Como ejemplo:
 
-![](Images/prometheus/prometheus-metric1.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/prometheus/prometheus-metric1.png)
 
 Y ahora, lo único que queda es profundizar en las métricas que Prometheus está recopilando, tal vez agregando algunos exportadores, ¿configurar el administrador de alertas tal vez? (este es un tema para otra publicación), ¿consumir esas métricas desde Grafana? (El artículo sobre esto ya está en camino : guiño :)
 
