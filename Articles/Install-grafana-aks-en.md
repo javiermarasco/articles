@@ -1,12 +1,7 @@
 ---
-toc: true
-layout: post
-description: Installing Grafana in an AKS cluster
-title: Grafana in AKS
-comments: true
-canonical_url: null
+title: Install and run Grafana in AKS cluster
+tags: 'AKS, Grafana, Monitoring'
 published: false
-id: 912927
 ---
 
 
