@@ -18,11 +18,8 @@ jobs:
     - name: Publish articles on dev.to
       uses: sinedied/publish-devto@v2
       with:
-        files: 'Articles/**/*.md'
+        files: 'Articles/**/**/*.md'
         devto_key: ${{ secrets.DEVTO_TOKEN }}
         github_token: ${{ secrets.GH_TOKEN }}
         branch: main
         conventional_commits: true
-        env:
-          DEBUG: *
-
