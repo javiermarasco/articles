@@ -9,6 +9,7 @@ categories:
 title: PowerGrafana
 comments: true
 published: false
+id: 912907
 ---
 
 ## PowerGrafana, what is it and what is it used for?  
