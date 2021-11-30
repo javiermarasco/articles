@@ -61,7 +61,7 @@ Since we want to keep our grafana resources in a separate namespace to have a be
 ```bash
 kubectl create namespace monitoring
 ```
-![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/create-namespace.png)
+
 
 **You can see here I use `kubens` to switch to the monitoring namespace, this is a very cool tool that makes your work with kubernetes easy by changing your namespace to the one you define so your next commands doesn't need to include the namespace on them**
 
