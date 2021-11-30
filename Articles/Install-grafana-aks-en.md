@@ -30,11 +30,11 @@ To install Grafana you have multiple options:
 This post will cover the deployment of Grafana as a Helm Chart as we did in the post about Prometheus, I will link an article about a deeper explanation on Helm Charts in the near future to go thru the benefits of Helm Charts and specially how to adjust them to cover your particular needs.
 
 To quickly start with this let's go and add the repository and update our repository list.
-![helm_repo_add](./Images/grafana/helm-repo-add.png)
+![helm_repo_add](./Images/helm-repo-add.png)
 
 And now we can check the Charts we have in the repository we just added, let's take a look.  
 
-![helm_search_repo](./Images/grafana/helm-search-repo.png)
+![helm_search_repo](./Images/helm-search-repo.png)
 
 Perfect! we are ready to start working!
 
@@ -55,7 +55,7 @@ Since we want to keep our grafana resources in a separate namespace to have a be
 ```bash
 kubectl create namespace monitoring
 ```
-![create_namespace](./Images/grafana/create-namespace.png)
+![create_namespace](./Images/create-namespace.png)
 
 **You can see here I use `kubens` to switch to the monitoring namespace, this is a very cool tool that makes your work with kubernetes easy by changing your namespace to the one you define so your next commands doesn't need to include the namespace on them**
 
@@ -64,7 +64,7 @@ kubectl create namespace monitoring
 helm search repo grafana
 ```
 
-![helm_search_repo_grafana](./Images/grafana/helm-search-repo-grafana.png)
+![helm_search_repo_grafana](./Images/helm-search-repo-grafana.png)
 
 Nice!, lot's of charts there, you can see there are charts for multiple solutions, including Grafana Enterprise, Loki (focused on logs more than metrics) and the base `grafana` one, that's the one we will be using, let's install it.
 
@@ -72,7 +72,7 @@ Nice!, lot's of charts there, you can see there are charts for multiple solution
 helm install grafana grafana/grafana
 ```
 
-![helm_install_grafana](./Images/grafana/helm-install-grafana.png)
+![helm_install_grafana](./Images/helm-install-grafana.png)
 
 Here we can see the helm command completed and we can notice several things, let's go over them one by one:
 
@@ -120,13 +120,13 @@ Now we can simply do a:
 kubectl port-forward grafana-5c999c4fd5-czxdw 3000:3000
 ```
 
-![grafana_login](./Images/grafana/grafana-login-1.png)
+![grafana_login](./Images/grafana-login-1.png)
 
 Use the username `admin` and the password you got in the step 1 of the instructions of the helm chart.
 
 To this point Grafana is fully configured but keep in mind that his installation is very basic, it will not persist (keep) your dashboards or any other configuration if the pod is killed, and this only has one single pod.
 
-All this can changed by downloading the Chart locally with `helm pull grafana/grafana --untar` and then adjusting our needs in there. If you do this you will notice the fact that there is no persistance once the pod is killed is because the storage for the `/var/lib/grafana/` directory (where all grafana config is stored) is an `EmptyDir` which is a very quick way to give the pod some place where to store data but it will be removed when the pod dies.
+All this can changed by downloading the Chart locally with `helm pull grafana/grafana --untar` and then adjusting our needs in there. If you do this you will notice the fact that there is no persistance once the pod is killed is because the storage for the `/var/lib/` directory (where all grafana config is stored) is an `EmptyDir` which is a very quick way to give the pod some place where to store data but it will be removed when the pod dies.
 
 I will cover more on how to customize Helm Charts locally in the post about that in the near future.
 
