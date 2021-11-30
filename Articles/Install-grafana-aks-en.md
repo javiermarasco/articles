@@ -2,6 +2,8 @@
 title: Install and run Grafana in AKS cluster
 tags: 'AKS, Grafana, Monitoring'
 published: true
+id: 912932
+date: '2021-11-30T08:56:57Z'
 ---
 
 
