@@ -35,11 +35,11 @@ To install Grafana you have multiple options:
 This post will cover the deployment of Grafana as a Helm Chart as we did in the post about Prometheus, I will link an article about a deeper explanation on Helm Charts in the near future to go thru the benefits of Helm Charts and specially how to adjust them to cover your particular needs.
 
 To quickly start with this let's go and add the repository and update our repository list.
-![](./Images/grafana/helm-repo-add.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-repo-add.png)
 
 And now we can check the Charts we have in the repository we just added, let's take a look.  
 
-![](./Images/grafana/helm-search-repo.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-search-repo.png)
 
 Perfect! we are ready to start working!
 
@@ -60,7 +60,7 @@ Since we want to keep our grafana resources in a separate namespace to have a be
 ```bash
 kubectl create namespace monitoring
 ```
-![](./Images/grafana/create-namespace.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/create-namespace.png)
 
 **You can see here I use `kubens` to switch to the monitoring namespace, this is a very cool tool that makes your work with kubernetes easy by changing your namespace to the one you define so your next commands doesn't need to include the namespace on them**
 
@@ -69,7 +69,7 @@ kubectl create namespace monitoring
 helm search repo grafana
 ```
 
-![](./Images/grafana/helm-search-repo-grafana.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-search-repo-grafana.png)
 
 Nice!, lot's of charts there, you can see there are charts for multiple solutions, including Grafana Enterprise, Loki (focused on logs more than metrics) and the base `grafana` one, that's the one we will be using, let's install it.
 
@@ -77,7 +77,7 @@ Nice!, lot's of charts there, you can see there are charts for multiple solution
 helm install grafana grafana/grafana
 ```
 
-![](./Images/grafana/helm-install-grafana.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/helm-install-grafana.png)
 
 Here we can see the helm command completed and we can notice several things, let's go over them one by one:
 
@@ -125,7 +125,7 @@ Now we can simply do a:
 kubectl port-forward grafana-5c999c4fd5-czxdw 3000:3000
 ```
 
-![](./Images/grafana/grafana-login-1.png)
+![](https://github.com/javiermarasco/articles/blob/main/Articles/Images/grafana/grafana-login-1.png)
 
 Use the username `admin` and the password you got in the step 1 of the instructions of the helm chart.
 
