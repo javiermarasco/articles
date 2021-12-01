@@ -2,6 +2,8 @@
 title: Instalando y configurando Grafana en un cluster AKS
 tags: 'AKS, Grafana, Monitoring'
 published: true
+id: 914353
+date: '2021-12-01T14:58:38Z'
 ---
 
 ## Introducción
