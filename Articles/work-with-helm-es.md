@@ -2,6 +2,8 @@
 title: Trabajando con Helm Charts
 tags: 'Helm, Kubernetes, Automation'
 published: true
+id: 914365
+date: '2021-12-01T15:19:31Z'
 ---
 
 # Introducción 
