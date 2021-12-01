@@ -17,33 +17,33 @@ En el mundo de Kubernetes a menudo nos encontramos con que tenemos aplicaciones 
 
 Como primer paso vamos a agregar el repositorio de Grafana (como un ejemplo, estos pasos aplican para cualquier helm chart).
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/grafana/helm-repo-add.png)
+![](./Images/grafana/helm-repo-add.png)
 
 Y vamos a ver que charts hay disponibles en el repositorio
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/grafana/helm-search-repo.png)
+![](./Images/grafana/helm-search-repo.png)
 
 Vamos a concentrarnos en el chart llamado `grafana/grafana` que es el que usamos en nuestra instalación de Grafana en otro articulo y que despliega los componentes básicos para una implementación de Grafana minima.
 
 Lo siguiente que tenemos que hacer es ir a un directorio donde queramos descargar nuestro chart y correr el comando `helm pull grafana/grafana --untar` esto va a descargar el chart a un directorio llamado `grafana` con todos los archivos necesarios dentro.  
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/download-chart.png)
+![](./Images/helm-charts/download-chart.png)
 
 Y dentro de este directorio están los archivos que componen el chart
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/download-chart-2.png)
+![](./Images/helm-charts/download-chart-2.png)
 
 # Empecemos a ver que hay dentro de un chart
 
 Lo primero que podemos ver es un archivo llamado `Chart.yaml`, este archivo contiene la descripcion del chart que acabamos de descargar
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/chart.png)
+![](./Images/helm-charts/chart.png)
 
 Vemos información como la version del Chart, la URL del proyecto al que pertenece el chart y algo mas como quien mantiene el chart, etc.
 
 Luego vemos una estructura de directorios
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/directories.png)
+![](./Images/helm-charts/directories.png)
 
 El único directorio que siempre vamos a encontrar en un chart es `templates` ya que en este directorio es que vamos a poner todos los archivos yaml que componen nuestra solución. Los demás directorios son necesarios para Grafana, en otros charts podemos encontrar otros directorios, pero siempre tengan en cuenta que los templates que forman los recursos en Kubernetes están en el directorio `templates`.
 
@@ -55,19 +55,19 @@ Básicamente un template es un archivo yaml que contiene instrucciones para que 
 
 En el archivo `deployment.yaml` podemos encontrar esto:
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/deployment.png)
+![](./Images/helm-charts/deployment.png)
 
 Donde en la línea 18 hace referencia a `.Values.replicas` esta es la forma en la que le decimos a Helm que para el valor del atributo `replicas` de este yaml, tome el valor que tenemos en el archivo `values.yaml` con la key `replicas`. El archivo `values.yaml` se ve así:
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/values.png)
+![](./Images/helm-charts/values.png)
 
 En la línea 24 de `values.yaml` podemos ver que dice `replicas : 1` si desplegamos este chart así, veremos que tenemos sola replica del pod `grafana`
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/single-replica.png)
+![](./Images/helm-charts/single-replica.png)
 
 Pero si modificamos este valor y ponemos 3, guardamos el archivo `values.yaml` y aplicamos el chart nuevamente, veremos que ahora tenemos 3 replicas de nuestro pod `grafana`
 
-![](https://raw.githubusercontent.com/javiermarasco/blog/master/images/helm-charts/3-replicas.png)
+![](./Images/helm-charts/3-replicas.png)
 
 Esto mismo podemos aplicarlo para cualquier configuración, de esta forma podemos alterar nuestra aplicación simplemente actualizando valores en `values.yaml` y corriendo un `helm upgrade grafana .` (si estamos en el directorio donde tenemos nuestro chart descargado)
 
