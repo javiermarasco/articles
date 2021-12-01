@@ -1,9 +1,7 @@
 ---
 title: Installing Prometheus in AKS
 tags: 'Prometheus, AKS, Kubernetes, Monitoring'
-published: false
-comments: true
-id: 914386
+published: true
 ---
 
 # Introduction
