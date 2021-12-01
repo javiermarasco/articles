@@ -2,8 +2,6 @@
 title: Trabajando con Helm Charts
 tags: 'Helm, Kubernetes, Automation'
 published: true
-id: 914364
-date: '2021-12-01T15:18:31Z'
 ---
 
 # Introducción 
@@ -78,7 +76,7 @@ Esto mismo podemos aplicarlo para cualquier configuración, de esta forma podemo
 # Mas allá de la configuración básica
 
 En `values.yaml` van a encontrar muchas líneas comentadas, si las des comentan van a estar habilitando nuevas configuraciones del chart, esto se debe a que helm nos permite poner código condicional en nuestros templates, algo como "si existe el bloque X desplegar Y recurso en Kubernetes". Un ejemplo de esto es el ingress controller de Grafana. 
-
+En la línea 181 de `values.yaml` dice "enabled: false" y en el archivo `ingress.yaml` en la línea 1 dice `{{- if .Values.ingress.enabled -}}`, esta es una forma de habilitar o deshabilitar (llamado también feature flag) un componente o configuración en base a lo que definamos en el archivo de valores del chart.
 
 # Por ultimo
 
