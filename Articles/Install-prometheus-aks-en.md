@@ -126,7 +126,7 @@ kubectl --namespace default port-forward $POD_NAME 9090
 
 **If you are using WSL to run your Kubernetes commands, you need to do some extra steps for this to work**
 - First check what's the IP of your WSL by running `wsl hostname -I` as you can't access the ports in your host machine (windows) by running localhost:port if you are exposing the ports inside WSL.
-- Second, the port-forward command should include --address 0.0.0.0 like `kubectl --namespace default port-forward --address 0.0.0.0 $POD_NAME 9090`
+- Second, the port-forward command should include --address 0.0.0.0 like "kubectl --namespace default port-forward --address 0.0.0.0 $POD_NAME 9090"
 - Third, you should use the WSL IP (the one from step one) instead of `localhost` to access Prometheus
 
 With this we can now go to our browser and access `localhost:9090` to see this dashboard:
