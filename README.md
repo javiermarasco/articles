@@ -1,2 +1,1 @@
-Articles go here
-.
+Articles go here.
