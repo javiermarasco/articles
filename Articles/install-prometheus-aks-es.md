@@ -2,6 +2,8 @@
 title: Prometheus en AKS
 tags: 'Prometheus, AKS, Kubernetes, Monitoring'
 published: true
+id: 920049
+date: '2021-12-07T17:24:04Z'
 ---
 # Introducción
 

@@ -1,8 +1,10 @@
 ---
-title: PowerGrafana, what is it and how to use it
+title: 'PowerGrafana, what is it and how to use it'
 description: A tool to programatically manage grafana
 tags: 'Powershell, Grafana, Monitoring, Automation'
 published: true
+id: 920048
+date: '2021-12-07T17:24:03Z'
 ---
 
 ## PowerGrafana, what is it and what is it used for?  
